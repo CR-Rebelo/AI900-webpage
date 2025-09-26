@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CR-webpage test</title>
+</head>
+<body>
+    <h1>CR-webpage test</h1>
+
+    <form id="promptForm">
+        <label for="prompt">Enter your prompt:</label><br>
+        <input type="text" id="prompt" name="prompt" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="response"></div>
+
+    <script>
+        document.getElementById("promptForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const prompt = document.getElementById("prompt").value;
+
+            const responseDiv = document.getElementById("response");
+            responseDiv.innerText = "Loading...";
+
+            const res = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt })
+            });
+
+            const data = await res.json();
+            responseDiv.innerText = data.response || "Error!";
+        });
+    </script>
+</body>
+</html>
