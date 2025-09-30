@@ -12,7 +12,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         endpoint = os.getenv("https://cr-ai900-openaiservice.openai.azure.com/")
         api_key = os.getenv("3ukNW7MRZLE218xiS7l7cuOwKam94jJBzxjag0FKCZ6gkqaL9xeJJQQJ99BIAC5RqLJXJ3w3AAABACOGlb2S")
         deployment = os.getenv("gpt-4")
-        api_version = "2023-12-01-preview"
+        api_version = "2025-01-01-preview"
 
         url = f"{endpoint}/openai/deployments/{deployment}/chat/completions?api-version={api_version}"
 
